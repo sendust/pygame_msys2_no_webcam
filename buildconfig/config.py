@@ -209,10 +209,10 @@ Only SDL2 is supported now.""")
             import buildconfig.config_unix as CFG
 
 
-    if sys.platform == 'win32':
-        additional_platform_setup = open(
-            os.path.join(BASE_PATH, 'buildconfig', "Setup_Win_Camera.in")).readlines()
-    elif sys.platform == 'darwin':
+#    if sys.platform == 'win32':
+#        additional_platform_setup = open(
+#            os.path.join(BASE_PATH, 'buildconfig', "Setup_Win_Camera.in")).readlines()
+    if sys.platform == 'darwin':
         additional_platform_setup = open(
             os.path.join(BASE_PATH, 'buildconfig', "Setup_Darwin.in")).readlines()
     elif sysconfig.get_config_var('MACHDEP') == 'emscripten':
