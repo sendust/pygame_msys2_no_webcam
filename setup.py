@@ -430,12 +430,12 @@ for e in extensions:
     if enable_arm_neon:
         e.define_macros.append(('PG_ENABLE_ARM_NEON', '1'))
 
-    e.extra_compile_args.extend(
-        # some warnings are skipped here
-        ("/W3", "/wd4142", "/wd4996")
-        if sys.platform == "win32"
-        else ("-Wall", "-Wno-error=unknown-pragmas")
-    )
+#    e.extra_compile_args.extend(
+#        # some warnings are skipped here
+#        ("/W3", "/wd4142", "/wd4996")
+#        if sys.platform == "win32"
+#        else ("-Wall", "-Wno-error=unknown-pragmas")
+#    )
 
     if "surface" in e.name and sys.platform == "darwin":
         # skip -Werror on alphablit because sse2neon is used on arm mac
@@ -446,9 +446,9 @@ for e in extensions:
         if sysconfig.get_config_var("MAINCC") != "clang":        
             e.extra_compile_args.append("-Wno-error=unused-but-set-variable")
 
-    if "mask" in e.name and sys.platform == "win32":
-        # skip analyze warnings that pop up a lot in mask for now. TODO fix
-        e.extra_compile_args.extend(("/wd6385", "/wd6386"))
+#    if "mask" in e.name and sys.platform == "win32":
+#        # skip analyze warnings that pop up a lot in mask for now. TODO fix
+#        e.extra_compile_args.extend(("/wd6385", "/wd6386"))
 
     if (
             "CI" in os.environ
